@@ -7,6 +7,8 @@ public class Main {
 
         System.out.println("Welcome!");
 
+        System.out.println("Testing if committing to github works.");
+
         //Call method to print menu
 
         //Ask user for name of restaurant
