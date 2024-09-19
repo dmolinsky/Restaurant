@@ -21,4 +21,8 @@ public class Owner {
         return name + " äger " + ownership + " %.";
     }
 
+    public static void printOwnersMenu () {
+        System.out.println("test");
+    }
+
 }

@@ -27,6 +27,8 @@ public class Employee {
         return name + " tjänar " + salary + " kr/h.";
     }
 
-
+    public static void printEmployeesMenu () {
+        System.out.println("test");
+    }
 }
 
