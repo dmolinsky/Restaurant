@@ -28,7 +28,7 @@ public class Employee {
     }
 
     public static void printEmployeesMenu () {
-        System.out.println("test");
+        System.out.println("Menu goes here...");
     }
 }
 

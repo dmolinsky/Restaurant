@@ -22,7 +22,7 @@ public class Owner {
     }
 
     public static void printOwnersMenu () {
-        System.out.println("test");
+        System.out.println("Menu goes here...");
     }
 
 }
