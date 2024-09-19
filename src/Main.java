@@ -5,18 +5,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome!");
+        System.out.println("Hello! Let's create your restaurant.\n" +
+                            "What would you like to name it? > ");
 
-        System.out.println("Testing if committing to github works.");
+        boolean validInput = true;
+        String inputName = "";
+        int menuChoice;
+        do {
+            inputName = sc.nextLine();
+            if (inputName.matches("[a-öA-Ö]+")) {
+                Restaurant restaurant = new Restaurant(inputName);
+            } else {
+                System.out.println("The name contains non-letter characters.\n" +
+                        "Please enter another name > ");
+                validInput = false;
+            }
+        } while (!validInput);
+        Restaurant restaurant = new Restaurant(inputName);
 
-        //Call method to print menu
+        restaurant.printMainMenu();
 
-        //Ask user for name of restaurant
-
-        //Create object for restaurant
-
-        //Ask user for amount of owners
+        menuChoice = sc.nextInt();
+        switch(menuChoice)  {
+            case 1 -> Owner.printOwnersMenu();
+            case 2 -> Employee.printEmployeesMenu();
+            //add case 3 to print summary
+            default -> System.out.println("Invalid menu choice. Try again > ");
+        }
 
 
     }
+
 }
