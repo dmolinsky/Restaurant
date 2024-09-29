@@ -44,8 +44,8 @@ public class Restaurant {
 
            int menuChoice = sc.nextInt();
            switch (menuChoice) {
-               case 1 -> Owner.printOwnersMenu();
-               case 2 -> Employee.printEmployeesMenu();
+               case 1 -> printOwnersMenu();
+               case 2 -> printEmployeesMenu();
                case 3 -> this.printSummary();
                case 0 -> {
                    System.out.println("Exiting program. Welcome back later!");
@@ -60,13 +60,42 @@ public class Restaurant {
 
 
     private void printOwnersMenu () {
-        System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?" + AnsiColors.ANSI_RESET);
-        System.out.printf("%-5s %10s%n","1.", "Show all owners.");
-        System.out.printf("%-5s %10s%n","2. ", "Add new owner.");
-        System.out.printf("%-5s %10s%n","3.,", "Modify and owner.");
-        System.out.printf("%-5s %10s%n","4. ", "Remove an owner.");
-        System.out.printf("%-5s %10s%n","0. ", "Go back to the main menu.");
-        System.out.printf(AnsiColors.ANSI_BLUE + "Enter your choice: " + AnsiColors.ANSI_RESET);
+
+        Scanner sc = new Scanner(System.in);
+        boolean goBack = false;
+        do {
+            System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?" + AnsiColors.ANSI_RESET);
+            System.out.printf("%-5s %10s%n", "1.", "Show all owners.");
+            System.out.printf("%-5s %10s%n", "2. ", "Add new owner.");
+            System.out.printf("%-5s %10s%n", "3.,", "Modify and owner.");
+            System.out.printf("%-5s %10s%n", "4. ", "Remove an owner.");
+            System.out.printf("%-5s %10s%n", "0. ", "Go back to the main menu.");
+            System.out.printf(AnsiColors.ANSI_BLUE + "Enter your choice: " + AnsiColors.ANSI_RESET);
+
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1 -> printOwners();
+                case 2 -> System.out.println("Add new owner not created yet.");
+                case 3 -> System.out.println("Modify owner not created yet.");
+                case 4 -> System.out.println("Remove owner not created yet.");
+                case 0 -> goBack = true;
+                default -> System.out.println("Invalid choice. Try again > ");
+            }
+        }while(!goBack);
+    }
+
+    private void printOwners () {
+        if (owners.isEmpty()) {
+            System.out.println("There are no owners.\n");
+
+        } else {
+            for (Owner owner : owners) {
+                System.out.println(owner.toString());
+            }
+            System.out.println();
+        }
     }
 
     private void printEmployeesMenu () {
