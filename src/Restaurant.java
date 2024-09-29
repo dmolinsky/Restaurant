@@ -19,34 +19,46 @@ public class Restaurant {
     }
 
     public void printMainMenu () {
-        System.out.printf(AnsiColors.ANSI_BLUE + "Welcome to " + name + ". " +
-                "\nWhat would you like to do?\n" + AnsiColors.ANSI_RESET);
-        System.out.printf("%-5s %10s%n","1.","Manage owners." );
-        System.out.printf("%-5s %10s%n","2", "Manage employees." );
-        System.out.printf("%-5s %10s%n", "3", "Print a summery." );
-        System.out.printf("%-5s %10s%n","0", "Exit the program." );
-
         Scanner sc = new Scanner(System.in);
-        int menuChoice = sc.nextInt();
-        switch (menuChoice) {
-            case 1 -> Owner.printOwnersMenu();
-            case 2 -> Employee.printEmployeesMenu();
-            case 3 -> this.printSummary();
-            default -> System.out.println("Invalid menu choice. Try again > ");
-        }
+        boolean exit = false;
+        do {
+            System.out.printf(AnsiColors.ANSI_BLUE + "Welcome to " + name + ". " +
+                    "\nWhat would you like to do?\n" + AnsiColors.ANSI_RESET);
+            System.out.printf("%-5s %10s%n","1.","Manage owners." );
+            System.out.printf("%-5s %10s%n","2.", "Manage employees." );
+            System.out.printf("%-5s %10s%n", "3.", "Print a summery." );
+            System.out.printf("%-5s %10s%n","0.", "Exit the program." );
+            System.out.printf(AnsiColors.ANSI_BLUE + "Enter your choice: " + AnsiColors.ANSI_RESET);
+
+            int menuChoice = sc.nextInt();
+            switch (menuChoice) {
+                case 1 -> Owner.printOwnersMenu();
+                case 2 -> Employee.printEmployeesMenu();
+                case 3 -> {
+                    this.printSummary();
+                    exit = false;
+                }
+                case 0 -> {
+                    System.out.println("Exiting program. Welcome back again soon!");
+                    exit = true;
+                }
+                default -> System.out.println("Invalid menu choice. Try again > ");
+            }
+        } while (!exit);
 
         sc.close();
     }
 
     private void printOwnersMenu () {
-        System.out.println("What would you like to do?"+
-                "\n1. Show all owners." +
-                "\n2. Add new owner." +
-                "\n3. Modify and owner." +
-                "\n4. Remove an owner." +
-                "\n0. Go back to the main menu." +
-                "\nEnter your choice: ");
+        System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?" + AnsiColors.ANSI_RESET);
+        System.out.printf("%-5s %10s%n","1.", "Show all owners.");
+        System.out.printf("%-5s %10s%n","2. ", "Add new owner.");
+        System.out.printf("%-5s %10s%n","3.,", "Modify and owner.");
+        System.out.printf("%-5s %10s%n","4. ", "Remove an owner.");
+        System.out.printf("%-5s %10s%n","0. ", "Go back to the main menu.");
+        System.out.printf(AnsiColors.ANSI_BLUE + "Enter your choice: " + AnsiColors.ANSI_RESET);
     }
+
 
     private void printEmployeesMenu () {
 
@@ -65,10 +77,12 @@ public class Restaurant {
 
         if (owners == null) {
             System.out.println(this.name + " has 0 owners.");
+            System.out.println();
         } else {
             for (Owner owner : owners) {
                 System.out.println(owner.toString());
             }
+            System.out.println();
         }
     }
 
