@@ -8,6 +8,8 @@ public class Restaurant {
 
     public Restaurant(String name) {
         this.name = name;
+        employees = new ArrayList<>();
+        owners = new ArrayList<>();
     }
 
     public String getName() {
@@ -62,7 +64,7 @@ public class Restaurant {
     }
 
     private void printSummary() {
-        if (employees == null) {
+        if (employees.isEmpty()) {
             System.out.println(this.name + " has 0 employees.");
         } else {
             for (Employee employee : employees) {
@@ -72,7 +74,7 @@ public class Restaurant {
 
         System.out.println(AnsiColors.ANSI_BLUE + "--------------------" + AnsiColors.ANSI_RESET);
 
-        if (owners == null) {
+        if (owners.isEmpty()) {
             System.out.println(this.name + " has 0 owners.\n");
 
         } else {
