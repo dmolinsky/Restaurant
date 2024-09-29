@@ -12,6 +12,16 @@ public class Restaurant {
         owners = new ArrayList<>();
     }
 
+    public void addEmployee(String name, double salary) {
+        Employee newEmployee = new Employee(name, salary);
+        employees.add(newEmployee);
+    }
+
+    public void addOwner(String name, int ownership) {
+        Owner newOwner = new Owner(name, ownership);
+        owners.add(newOwner);
+    }
+
     public String getName() {
         return name;
     }
