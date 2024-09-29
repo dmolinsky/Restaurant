@@ -24,16 +24,6 @@ public class Main {
         Restaurant restaurant = new Restaurant(inputName);
 
         restaurant.printMainMenu();
-
-        menuChoice = sc.nextInt();
-        switch(menuChoice)  {
-            case 1 -> Owner.printOwnersMenu();
-            case 2 -> Employee.printEmployeesMenu();
-            //add case 3 to print summary
-            default -> System.out.println("Invalid menu choice. Try again > ");
-        }
-
-
     }
 
 }
