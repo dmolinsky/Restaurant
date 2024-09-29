@@ -17,9 +17,29 @@ public class Restaurant {
         employees.add(newEmployee);
     }
 
-    public void addOwner(String name, int ownership) {
-        Owner newOwner = new Owner(name, ownership);
-        owners.add(newOwner);
+    public void addOwnerToRestaurant() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.printf(AnsiColors.ANSI_BLUE + "\nEnter owner name: ");
+        String name = sc.nextLine();
+        //System.out.println(AnsiColors.ANSI_BLUE + "Enter ownership percentage: ");
+        //int newOwnership = sc.nextInt();
+
+        if (owners.size() == 0) {
+            Owner newOwner = new Owner(name, 100);
+            owners.add(newOwner);
+            System.out.printf(AnsiColors.ANSI_BLUE + "Owner " + name + " added to restaurant.\n");
+            System.out.printf("Ownership automatically set to 100 percent. \n\n" + AnsiColors.ANSI_RESET);
+
+        } else {
+            int possibleOwnership = 100 - owners.size();
+            System.out.println(AnsiColors.ANSI_BLUE + "Enter ownership percentage: ");
+            int newOwnership = sc.nextInt();
+            if (newOwnership < possibleOwnership) {
+                System.out.println("There's already " + owners.size());
+            } else
+        }
+
     }
 
     public String getName() {
@@ -64,7 +84,7 @@ public class Restaurant {
         Scanner sc = new Scanner(System.in);
         boolean goBack = false;
         do {
-            System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?" + AnsiColors.ANSI_RESET);
+            System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?\n" + AnsiColors.ANSI_RESET);
             System.out.printf("%-5s %10s%n", "1.", "Show all owners.");
             System.out.printf("%-5s %10s%n", "2. ", "Add new owner.");
             System.out.printf("%-5s %10s%n", "3.,", "Modify and owner.");
@@ -77,7 +97,7 @@ public class Restaurant {
 
             switch (choice) {
                 case 1 -> printOwners();
-                case 2 -> System.out.println("Add new owner not created yet.");
+                case 2 -> addOwnerToRestaurant();
                 case 3 -> System.out.println("Modify owner not created yet.");
                 case 4 -> System.out.println("Remove owner not created yet.");
                 case 0 -> goBack = true;
