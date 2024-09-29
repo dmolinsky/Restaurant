@@ -19,21 +19,29 @@ public class Restaurant {
     }
 
     public void printMainMenu () {
-        System.out.printf(AnsiColors.ANSI_BLUE + "Welcome to " + name + ". " +
-                "\nWhat would you like to do?\n" + AnsiColors.ANSI_RESET);
-        System.out.printf("%-5s %10s%n","1.","Manage owners." );
-        System.out.printf("%-5s %10s%n","2", "Manage employees." );
-        System.out.printf("%-5s %10s%n", "3", "Print a summery." );
-        System.out.printf("%-5s %10s%n","0", "Exit the program." );
-
         Scanner sc = new Scanner(System.in);
-        int menuChoice = sc.nextInt();
-        switch (menuChoice) {
-            case 1 -> Owner.printOwnersMenu();
-            case 2 -> Employee.printEmployeesMenu();
-            case 3 -> this.printSummary();
-            default -> System.out.println("Invalid menu choice. Try again > ");
-        }
+        boolean exit = false;
+        do {
+           System.out.printf(AnsiColors.ANSI_BLUE + "Welcome to " + name + ". " +
+                   "\nWhat would you like to do?\n" + AnsiColors.ANSI_RESET);
+           System.out.printf("%-5s %10s%n", "1.", "Manage owners.");
+           System.out.printf("%-5s %10s%n", "2.", "Manage employees.");
+           System.out.printf("%-5s %10s%n", "3.", "Print a summery.");
+           System.out.printf("%-5s %10s%n", "0.", "Exit the program.");
+
+
+           int menuChoice = sc.nextInt();
+           switch (menuChoice) {
+               case 1 -> Owner.printOwnersMenu();
+               case 2 -> Employee.printEmployeesMenu();
+               case 3 -> this.printSummary();
+               case 0 -> {
+                   System.out.println("Exiting program. Welcome back later!");
+                   exit = true;
+               }
+               default -> System.out.println("Invalid menu choice. Try again > ");
+           }
+       }while(!exit);
 
         sc.close();
     }
@@ -65,11 +73,13 @@ public class Restaurant {
         System.out.println(AnsiColors.ANSI_BLUE + "--------------------" + AnsiColors.ANSI_RESET);
 
         if (owners == null) {
-            System.out.println(this.name + " has 0 owners.");
+            System.out.println(this.name + " has 0 owners.\n");
+
         } else {
             for (Owner owner : owners) {
                 System.out.println(owner.toString());
             }
+            System.out.println();
         }
     }
 
