@@ -38,14 +38,15 @@ public class Restaurant {
         sc.close();
     }
 
+
     private void printOwnersMenu () {
-        System.out.println("What would you like to do?"+
-                "\n1. Show all owners." +
-                "\n2. Add new owner." +
-                "\n3. Modify and owner." +
-                "\n4. Remove an owner." +
-                "\n0. Go back to the main menu." +
-                "\nEnter your choice: ");
+        System.out.printf(AnsiColors.ANSI_BLUE + "What would you like to do?" + AnsiColors.ANSI_RESET);
+        System.out.printf("%-5s %10s%n","1.", "Show all owners.");
+        System.out.printf("%-5s %10s%n","2. ", "Add new owner.");
+        System.out.printf("%-5s %10s%n","3.,", "Modify and owner.");
+        System.out.printf("%-5s %10s%n","4. ", "Remove an owner.");
+        System.out.printf("%-5s %10s%n","0. ", "Go back to the main menu.");
+        System.out.printf(AnsiColors.ANSI_BLUE + "Enter your choice: " + AnsiColors.ANSI_RESET);
     }
 
     private void printEmployeesMenu () {
