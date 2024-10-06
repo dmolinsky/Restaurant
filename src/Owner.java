@@ -3,7 +3,7 @@ public class Owner {
     private float ownership;
     static private int nOwners;
 
-    public Owner(String name, int ownership) {
+    public Owner(String name, float ownership) {
         this.name = name;
         this.ownership = ownership;
         nOwners++;
@@ -18,7 +18,7 @@ public class Owner {
     }
 
     public String toString() {
-        return name + " äger " + ownership + " %.";
+        return name + " owns " + ownership + " %.";
     }
 
 

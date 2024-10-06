@@ -15,6 +15,7 @@ public class Main {
             inputName = sc.nextLine();
             if (inputName.matches("[a-öA-Ö]+")) {
                 Restaurant restaurant = new Restaurant(inputName);
+                validInput = true;
             } else {
                 System.out.println("The name contains non-letter characters.\n" +
                         "Please enter another name > ");
