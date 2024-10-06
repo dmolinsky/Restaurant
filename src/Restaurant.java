@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Restaurant {
     private String name;
-    private ArrayList<Employee> employees;
-    private ArrayList<Owner> owners;
+    private final ArrayList<Employee> employees;
+    private final ArrayList<Owner> owners;
 
     public Restaurant(String name) {
         this.name = name;
@@ -219,6 +219,7 @@ public class Restaurant {
         if (employees.isEmpty()) {
             System.out.println(this.name + " has 0 employees.");
         } else {
+            System.out.println(this.name + " has " + employees.size() + " employees:");
             for (Employee employee : employees) {
                 System.out.println(employee.toString());
             }
@@ -230,6 +231,7 @@ public class Restaurant {
             System.out.println(this.name + " has 0 owners.\n");
 
         } else {
+            System.out.println(this.name + " has " + owners.size() + " owners:");
             for (Owner owner : owners) {
                 System.out.println(owner.toString());
             }
